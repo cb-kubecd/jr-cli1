@@ -1,7 +1,7 @@
 package root
 
 import (
-	"github.com/REPLACE_ME_ORG/REPLACE_ME_APP_NAME/pkg"
+	"github.com/cb-kubecd/jr-cli1/pkg"
 	"github.com/spf13/cobra"
 )
 

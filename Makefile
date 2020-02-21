@@ -2,7 +2,7 @@
 rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
 
 SHELL := /bin/bash
-NAME := REPLACE_ME_APP_NAME
+NAME := jr-cli1
 BUILD_TARGET = bin
 MAIN_SRC_FILE=cmd/main.go
 GO := GO111MODULE=on go

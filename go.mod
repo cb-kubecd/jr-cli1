@@ -1,4 +1,4 @@
-module github.com/REPLACE_ORG/REPLACE_ME_APP_NAME
+module github.com/REPLACE_ORG/jr-cli1
 
 go 1.12
 
