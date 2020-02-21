@@ -21,6 +21,8 @@ CGO_ENABLED = 0
 
 REPORTS_DIR=$(BUILD_TARGET)/reports
 
+GITHUB_ACCESS_TOKEN=$(shell jxl step get git credentials token)
+
 GOTEST := $(GO) test
 
 # set dev version unless VERSION is explicitly set via environment

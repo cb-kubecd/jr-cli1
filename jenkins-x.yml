@@ -7,5 +7,6 @@ pipelineConfig:
         steps:
           - name: make-build
             command: make release
+            image: rawlingsj80/builder-go:wip3
 
 
