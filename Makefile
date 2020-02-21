@@ -22,12 +22,6 @@ CGO_ENABLED = 0
 REPORTS_DIR=$(BUILD_TARGET)/reports
 
 GOTEST := $(GO) test
-# If available, use gotestsum which provides more comprehensive output
-# This is used in the CI builds
-ifneq (, $(shell which gotestsum 2> /dev/null))
-GOTESTSUM_FORMAT ?= standard-quiet
-GOTEST := GO111MODULE=on gotestsum --junitfile $(REPORTS_DIR)/integration.junit.xml --format $(GOTESTSUM_FORMAT) --
-endif
 
 # set dev version unless VERSION is explicitly set via environment
 VERSION ?= $(shell echo "$$(git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)' 2>/dev/null)-dev+$(REV)" | sed 's/^v//')
@@ -132,9 +126,9 @@ darwin: ## Build for OSX
 	chmod +x build/darwin/$(NAME)
 
 .PHONY: release
-release: clean build test linux win darwin # Release the binary
-	git fetch origin refs/tags/v$(VERSION)
-	jx-labs step changelog --verbose --header-file=hack/changelog-header.md --version=$(VERSION) --rev=$(PULL_BASE_SHA) --output-markdown=changelog.md --update-release=false; \
+release: clean build test linux win darwin
+	#git fetch origin refs/tags/v$(VERSION)
+	jx step changelog --verbose --header-file=hack/changelog-header.md --version=$(VERSION) --rev=$(PULL_BASE_SHA) --output-markdown=changelog.md --update-release=false; \
 	GITHUB_TOKEN=$(GITHUB_ACCESS_TOKEN) REV=$(REV) BRANCH=$(BRANCH) BUILDDATE=$(BUILD_DATE) GOVERSION=$(GO_VERSION) ROOTPACKAGE=$(ROOT_PACKAGE) VERSION=$(VERSION) goreleaser release --config=.goreleaser.yml --rm-dist --release-notes=./changelog.md --skip-validate; \
 
 
