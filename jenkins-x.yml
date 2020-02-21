@@ -1,1 +1,11 @@
 buildPack: go
+pipelineConfig:
+  pipelines:
+    release:
+      build:
+        replace: true
+        steps:
+          - name: make-build
+            command: make release
+
+
