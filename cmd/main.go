@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/jenkins-x-labs/foo/cmd/root"
+	"github.com/cb-kubecd/jr-cli1/cmd/root"
 )
 
 // Entrypoint for the command
