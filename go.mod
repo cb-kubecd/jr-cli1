@@ -1,4 +1,4 @@
-module github.com/REPLACE_ORG/jr-cli1
+module github.com/cb-kubecd/jr-cli1
 
 go 1.12
 
